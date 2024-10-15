@@ -30,3 +30,15 @@ def ith_order_statistic(arr, i):
     arr_copy = arr.copy()
     
     return quickselect(arr_copy, 0, len(arr_copy) - 1, i - 1)
+
+# Demonstration
+arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
+print("Original array:", arr)
+
+for i in range(1, len(arr) + 1):
+    result = ith_order_statistic(arr, i)
+    print(f"{i}th order statistic: {result}")
+
+# Verify the results
+sorted_arr = sorted(arr)
+print("Sorted array:", sorted_arr)
