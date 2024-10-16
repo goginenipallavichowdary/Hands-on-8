@@ -23,5 +23,7 @@ linked_list_instance.insert_at_start(1)
 linked_list_instance.insert_at_start(2)  
 linked_list_instance.display()
 
-"""2
-1"""
+"""output
+2
+1
+"""
