@@ -28,7 +28,8 @@ k = int(input("Enter value of k: "))
 print(f"The {k}th smallest element is: {quickselect(a, k)}")
 
 
-"""Enter the array: 3 1 4 1 5 9 2 6 5 3 5
+"""output
+Enter the array: 3 1 4 1 5 9 2 6 5 3 5
 Enter value of k: 4
 The 4th smallest element is: 3"""
 
