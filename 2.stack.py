@@ -26,5 +26,6 @@ stack.push(1)
 stack.push(2)
 print(stack.pop())
 
-"""Enter the size of the stack: 5
+"""output
+Enter the size of the stack: 5
 2"""
