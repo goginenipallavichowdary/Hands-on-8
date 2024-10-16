@@ -72,49 +72,11 @@ void list_print(LinkedList *list) {
         printf("List is empty\n");
         return;
     }
-    printf("List contents: ");
+    printf("List contents:\n");
     int current = list->head;
     while (current != -1) {
         printf("%d ", list->nodes[current].data);
         current = list->nodes[current].next;
     }
     printf("\n");
-}
-
-int main() {
-    LinkedList list;
-    list_init(&list);
-
-    printf("Inserting elements: 3, 7, 2, 5\n");
-    list_insert(&list, 3);
-    list_insert(&list, 7);
-    list_insert(&list, 2);
-    list_insert(&list, 5);
-
-    list_print(&list);
-
-    printf("Removing element: 7\n");
-    if (list_remove(&list, 7)) {
-        printf("7 removed successfully\n");
-    } else {
-        printf("7 not found in the list\n");
-    }
-
-    list_print(&list);
-
-    printf("Inserting element: 9\n");
-    list_insert(&list, 9);
-
-    list_print(&list);
-
-    printf("Trying to remove non-existent element: 10\n");
-    if (list_remove(&list, 10)) {
-        printf("10 removed successfully\n");
-    } else {
-        printf("10 not found in the list\n");
-    }
-
-    list_print(&list);
-
-    return 0;
 }
