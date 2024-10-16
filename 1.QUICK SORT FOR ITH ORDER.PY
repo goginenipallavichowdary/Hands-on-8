@@ -1,42 +1,34 @@
 import random
 
-def partition(arr, low, high):
-    pivot = arr[high]
-    i = low - 1
-    for j in range(low, high):
-        if arr[j] <= pivot:
-            i += 1
-            arr[i], arr[j] = arr[j], arr[i]
-    arr[i + 1], arr[high] = arr[high], arr[i + 1]
-    return i + 1
-
-def quickselect(arr, low, high, k):
-    if low == high:
-        return arr[low]
-    
-    pivot_index = partition(arr, low, high)
-    
-    if k == pivot_index:
-        return arr[k]
-    elif k < pivot_index:
-        return quickselect(arr, low, pivot_index - 1, k)
+def quickselect(a, k, left=0, right=None):
+    if right is None:
+        right = len(a) - 1
+    pivotIndex = random.randint(left, right)
+    pivotIndex = partition(a, left, right, pivotIndex)
+    if pivotIndex == k - 1:
+        return a[pivotIndex]
+    elif pivotIndex < k - 1:
+        return quickselect(a, k, pivotIndex + 1, right)
     else:
-        return quickselect(arr, pivot_index + 1, high, k)
+        return quickselect(a, k, left, pivotIndex - 1)
 
-def ith_order_statistic(arr, i):
-    if i < 1 or i > len(arr):
-        return None
-    
-    arr_copy = arr.copy()
-    
-    return quickselect(arr_copy, 0, len(arr_copy) - 1, i - 1)
+def partition(a, left, right, pivotIndex):
+    pivotValue = a[pivotIndex]
+    a[pivotIndex], a[right] = a[right], a[pivotIndex]
+    storeIndex = left
+    for i in range(left, right):
+        if a[i] < pivotValue:
+            a[i], a[storeIndex] = a[storeIndex], a[i]
+            storeIndex += 1
+    a[right], a[storeIndex] = a[storeIndex], a[right]
+    return storeIndex
 
-arr = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-print("Original array:", arr)
+a = list(map(int, input("Enter the array: ").split()))
+k = int(input("Enter value of k: "))
+print(f"The {k}th smallest element is: {quickselect(a, k)}")
 
-for i in range(1, len(arr) + 1):
-    result = ith_order_statistic(arr, i)
-    print(f"{i}th order statistic: {result}")
 
-sorted_arr = sorted(arr)
-print("Sorted array:", sorted_arr)
+"""Enter the array: 3 1 4 1 5 9 2 6 5 3 5
+Enter value of k: 4
+The 4th smallest element is: 3"""
+
