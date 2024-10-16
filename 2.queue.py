@@ -27,5 +27,6 @@ queue.enqueue(1)
 queue.enqueue(2)
 print(queue.dequeue())
 
-"""Enter the size of the queue: 2
+"""output
+Enter the size of the queue: 2
 1"""
